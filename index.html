@@ -185,7 +185,8 @@
     line-height:1.08; letter-spacing:-.02em; margin:0; }
   .work-head { display:grid; grid-template-columns:1fr auto; gap:56px; align-items:end; margin-bottom:52px; }
   .work-head p { font:400 16px/1.72 Archivo,sans-serif; color:var(--muted); margin:0; max-width:44ch; text-wrap:pretty; }
-  .doors { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+  .doors { display:grid; grid-template-columns:repeat(2,1fr); gap:24px; }
+  @media (min-width:1100px) { .doors { grid-template-columns:repeat(4,1fr); } }
   .door { display:flex; flex-direction:column; min-height:330px; padding:34px 32px 30px;
     border:1px solid var(--rule); border-radius:8px;
     transition:transform .25s ease,border-color .25s,box-shadow .25s; }
@@ -313,6 +314,7 @@
       <a href="#work">Work</a>
       <a href="#principles">Principles</a>
       <a href="#status">Status</a>
+      <a href="atelier/">Atelier</a>
       <a class="nav-cta" href="https://www.linkedin.com/in/kienchil/" target="_blank" rel="noopener">Contact <span aria-hidden="true">↗</span></a>
     </nav>
   </div>
@@ -332,7 +334,8 @@
         <p class="hero-body rise d4">We build continuity, source-bound memory, and human-gated agency for work where fluency is not enough — high-stakes operations, professional desks, and teaching that refuses the hype.</p>
         <div class="ctas rise d5">
           <a class="btn btn-primary" href="#work">Enter the work <span aria-hidden="true">→</span></a>
-          <a class="btn btn-ghost" href="https://kienluu78.github.io/keygraph/" target="_blank" rel="noopener">KeyGraph proof</a>
+          <a class="btn btn-ghost" href="atelier/">KeyGraph atelier</a>
+          <a class="btn btn-ghost" href="https://kienluu78.github.io/keygraph/" target="_blank" rel="noopener">Proof site</a>
         </div>
       </div>
       <div class="hero-art rise d2" aria-hidden="true">
@@ -367,7 +370,7 @@
     <div class="wrap pad">
       <div class="kicker"><b>01</b> The work</div>
       <div class="work-head">
-        <h2>Three doors. One house.</h2>
+        <h2>Four doors. One house.</h2>
         <p>Not a product catalogue — a research collaborative with live proofs. Pick the door that matches the conversation you are already in.</p>
       </div>
       <div class="doors">
@@ -377,14 +380,20 @@
           <p>An always-on memory agent. Source-bound continuity that holds under real operational load — nothing asserted without a record behind it.</p>
           <div class="door-go">Open <span aria-hidden="true">→</span></div>
         </a>
+        <a class="door" href="atelier/">
+          <div class="door-top"><b>02</b><span>Live slice</span></div>
+          <h3>KeyGraph atelier</h3>
+          <p>Text atelier for committee and beta eyes — source chips on every answer, refuse ungrounded claims. Auth later; honesty now.</p>
+          <div class="door-go">Enter <span aria-hidden="true">→</span></div>
+        </a>
         <a class="door" href="https://www.linkedin.com/in/kienchil/" target="_blank" rel="noopener">
-          <div class="door-top"><b>02</b><span>Teaching</span></div>
+          <div class="door-top"><b>03</b><span>Teaching</span></div>
           <h3>GenAI workshops</h3>
           <p>Shared vocabulary before enablement: where GenAI fits, how the machine actually learns, and what it cannot be trusted to do. No demo theatre.</p>
           <div class="door-go">Open <span aria-hidden="true">→</span></div>
         </a>
         <a class="door" href="https://www.linkedin.com/in/kienchil/" target="_blank" rel="noopener">
-          <div class="door-top"><b>03</b><span>Desk</span></div>
+          <div class="door-top"><b>04</b><span>Desk</span></div>
           <h3>Agent Desk Rescue</h3>
           <p>Coding-agent skills, safety rails and operational recovery for teams who already bought the tools and need them to hold under pressure.</p>
           <div class="door-go">Open <span aria-hidden="true">→</span></div>
@@ -423,6 +432,7 @@
           <div class="lab yes">Yes — running now</div>
           <ul class="list">
             <li>Live KeyGraph product proof</li>
+            <li>KeyGraph atelier (invite UI)</li>
             <li>Teaching modules in circulation</li>
             <li>Agent desk enablement</li>
           </ul>
