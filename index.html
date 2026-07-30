@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LZRC — Luu Zaibatsu Research Collaborative</title>
+<meta name="description" content="Luu Zaibatsu Research Collaborative — Adelaide research atelier for AI systems that stay honest under real operational load. Memory, continuity, teaching, and human-gated agency.">
+<meta name="robots" content="index,follow">
+<meta property="og:type" content="website">
+<meta property="og:title" content="LZRC — Luu Zaibatsu Research Collaborative">
+<meta property="og:description" content="Research atelier for AI that stays honest under load. Adelaide. Memory ours. Models interchangeable.">
+<meta property="og:url" content="https://kienluu78.github.io/lzrc/">
+<meta property="og:image" content="https://kienluu78.github.io/lzrc/og.png">
+<meta property="og:image:width" content="1024">
+<meta property="og:image:height" content="1024">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="LZRC — Luu Zaibatsu Research Collaborative">
+<meta name="twitter:description" content="Research atelier for AI that stays honest under load. Adelaide.">
+<meta name="twitter:image" content="https://kienluu78.github.io/lzrc/og.png">
+<link rel="icon" href="monogram.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,500;0,600;1,400&family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream:#FAF8F5; --panel:#F3EEE6; --navy:#1B2A4A; --teal:#0D6B6B;
+    --gold:#A67C2D; --gold-lite:#C4A35A; --muted:#5C6578; --rule:#D4CBB8;
+    --max:1240px; --pad:72px;
+  }
+  *,*::before,*::after { box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  html,body {
+    margin:0; padding:0; background:var(--cream); color:var(--navy);
+    font-family:Archivo,system-ui,-apple-system,sans-serif;
+    -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+  }
+  img,svg { max-width:100%; display:block; }
+  a { color:inherit; text-decoration:none; }
+  ::selection { background:rgba(13,107,107,.16); }
+  :focus-visible { outline:1.5px solid var(--teal); outline-offset:3px; }
+  body::before {
+    content:""; position:fixed; inset:0; pointer-events:none; z-index:100; opacity:.035;
+    mix-blend-mode:multiply;
+    background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  .wrap { max-width:var(--max); margin:0 auto; padding:0 var(--pad); }
+
+  /* mark */
+  .mono {
+    position:relative; width:40px; height:40px; flex:0 0 auto;
+    border:1px solid var(--navy); border-radius:5px; background:var(--cream);
+    display:grid; grid-template-columns:1fr 1fr; grid-template-rows:1fr 1fr;
+  }
+  .mono span {
+    display:flex; align-items:center; justify-content:center;
+    font-family:Spectral,serif; font-weight:400; font-size:13px; line-height:1; color:var(--navy);
+  }
+  .mono span:nth-child(1),.mono span:nth-child(2) { padding-bottom:1px; }
+  .mono .z { color:var(--teal); }
+  .mono i.v { position:absolute; left:50%; top:19%; bottom:19%; width:1px; background:var(--rule); }
+  .mono i.h { position:absolute; top:50%; left:19%; right:19%; height:1px; background:var(--rule); }
+  .mono i.t { position:absolute; top:4px; right:4px; width:6px; height:6px; border-top:1px solid var(--gold); border-right:1px solid var(--gold); }
+  .mono-lg { width:300px; height:300px; border-width:1.5px; border-radius:10px;
+    box-shadow:0 0 0 1px rgba(166,124,45,.16), 0 50px 90px -40px rgba(27,42,74,.3);
+    will-change:transform; }
+  .mono-lg span { font-weight:300; font-size:78px; }
+  .mono-lg span:nth-child(1),.mono-lg span:nth-child(2) { padding-bottom:6px; }
+  .mono-lg i.v,.mono-lg i.h { background:var(--navy); opacity:.55; }
+  .mono-lg i.t { top:11px; right:11px; width:20px; height:20px; border-width:1.5px; }
+
+  /* Hero monogram — continuous spin (nav mark stays still).
+     Intentional product motion: still runs under prefers-reduced-motion
+     (system Reduce motion was killing an 18s spin entirely). */
+  .mono-spin-wrap {
+    position: relative;
+    z-index: 1;
+    width: 300px;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .mono-spin-wrap .mono-lg {
+    width: 100%;
+    height: 100%;
+  }
+  .mono-spin {
+    /* transform on this node only — parent .rise must not own this element */
+    animation: mono-spin 12s linear infinite !important;
+    transform-origin: 50% 50%;
+    transform: rotate(0deg);
+  }
+  @keyframes mono-spin {
+    0%   { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  /* Soft counter ring */
+  .mono-spin-wrap::before {
+    content: "";
+    position: absolute;
+    inset: -12%;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 0;
+    border: 1px solid rgba(166, 124, 45, 0.22);
+    animation: mono-orbit 12s linear infinite reverse;
+  }
+  @keyframes mono-orbit {
+    0%   { transform: rotate(0deg) scale(1); opacity: 0.5; }
+    50%  { transform: rotate(180deg) scale(1.04); opacity: 0.9; }
+    100% { transform: rotate(360deg) scale(1); opacity: 0.5; }
+  }
+  .mono-spin-wrap .mono-spin { position: relative; z-index: 1; }
+
+  /* nav */
+  .nav { position:sticky; top:0; z-index:50; background:rgba(250,248,245,.86);
+    backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px);
+    border-bottom:1px solid transparent; transition:border-color .3s ease; }
+  .nav.is-scrolled { border-bottom-color:var(--rule); }
+  .nav-inner { max-width:var(--max); margin:0 auto; padding:20px var(--pad);
+    display:flex; align-items:center; justify-content:space-between; gap:24px; }
+  .brand { display:flex; align-items:center; gap:14px; }
+  .brand-name { font-family:Spectral,serif; font-weight:500; font-size:17px; letter-spacing:.06em; }
+  .brand-sub { font:500 9px/1 Archivo,sans-serif; letter-spacing:.2em; text-transform:uppercase; color:var(--muted); }
+  .nav-links { display:flex; align-items:center; gap:34px; }
+  .nav-links a { font:500 12.5px/1 Archivo,sans-serif; letter-spacing:.06em; transition:color .2s; }
+  .nav-links a:hover { color:var(--teal); }
+  .nav-cta { display:inline-flex; align-items:center; gap:9px; padding:11px 18px;
+    border:1px solid var(--navy); border-radius:4px; transition:border-color .2s,color .2s; }
+  .nav-cta span { color:var(--gold); }
+  .nav-cta:hover { border-color:var(--teal); }
+
+  /* hero */
+  .hero { border-bottom:1px solid var(--rule); }
+  .hero-grid { max-width:var(--max); margin:0 auto; padding:96px var(--pad) 104px;
+    display:grid; grid-template-columns:1.08fr .92fr; gap:72px; align-items:center;
+    min-height:calc(100vh - 82px); min-height:calc(100dvh - 82px); }
+  .eyebrow { display:inline-flex; align-items:center; gap:12px; margin-bottom:34px; }
+  .dot { width:6px; height:6px; border-radius:50%; background:var(--teal); animation:pulse 3s ease-in-out infinite; }
+  @keyframes pulse { 0%,100%{box-shadow:0 0 0 4px rgba(13,107,107,.14)} 50%{box-shadow:0 0 0 9px rgba(13,107,107,.05)} }
+  .eyebrow span:last-child { font:600 11px/1 Archivo,sans-serif; letter-spacing:.24em; text-transform:uppercase; color:var(--muted); }
+  .hero h1 { font-family:Spectral,serif; font-weight:300; font-size:clamp(46px,6.4vw,88px);
+    line-height:.96; letter-spacing:-.035em; margin:0; }
+  .hero h1 em { font-style:italic; font-weight:400; color:var(--teal); }
+  .hero-rule { width:88px; height:1px; border:0; background:linear-gradient(90deg,var(--gold),var(--gold-lite)); margin:36px 0 26px; }
+  .hero-lead { font-family:Spectral,serif; font-size:clamp(19px,2vw,25px); line-height:1.3; letter-spacing:-.01em; margin:0 0 20px; }
+  .hero-body { font:400 16.5px/1.72 Archivo,sans-serif; color:var(--muted); margin:0 0 40px; max-width:46ch; text-wrap:pretty; }
+  .ctas { display:flex; flex-wrap:wrap; gap:14px; }
+  .btn { display:inline-flex; align-items:center; gap:11px; padding:16px 26px; border:1px solid var(--navy);
+    border-radius:4px; font:500 13px/1 Archivo,sans-serif; letter-spacing:.08em;
+    transition:background .2s,border-color .2s,color .2s,transform .2s,box-shadow .2s; }
+  .btn-primary { background:var(--navy); color:var(--cream); }
+  .btn-primary span { color:var(--gold-lite); }
+  .btn-primary:hover { background:var(--teal); border-color:var(--teal); transform:translateY(-1px);
+    box-shadow:0 14px 30px -16px rgba(13,107,107,.6); }
+  .btn-ghost:hover { border-color:var(--teal); color:var(--teal); transform:translateY(-1px); }
+  .hero-art { position:relative; display:flex; align-items:center; justify-content:center; }
+  .hero-art::before { content:""; position:absolute; width:520px; height:520px; max-width:150%; max-height:150%;
+    border-radius:50%; background:radial-gradient(circle,rgba(13,107,107,.13) 0%,rgba(13,107,107,.04) 42%,rgba(13,107,107,0) 68%); }
+  .flabel { position:absolute; font:500 10px/1 Archivo,sans-serif; letter-spacing:.2em;
+    text-transform:uppercase; color:var(--muted); white-space:nowrap; }
+  .flabel.a { top:2%; left:1%; }
+  .flabel.b { bottom:4%; right:1%; color:var(--teal); }
+  .rise { animation:rise .9s cubic-bezier(.22,1,.36,1) both; }
+  .d1{animation-delay:.08s}.d2{animation-delay:.16s}.d3{animation-delay:.24s}.d4{animation-delay:.32s}.d5{animation-delay:.4s}
+  @keyframes rise { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:none} }
+
+  /* band */
+  .band { background:var(--navy); padding:26px 0; overflow:hidden; }
+  .band-track { display:flex; width:max-content; animation:marquee 34s linear infinite; }
+  .band-set { display:flex; align-items:center; gap:40px; padding-right:40px;
+    font:500 11.5px/1 Archivo,sans-serif; letter-spacing:.22em; text-transform:uppercase;
+    color:rgba(250,248,245,.8); white-space:nowrap; }
+  .band-set i { width:4px; height:4px; border-radius:50%; background:var(--teal); }
+  .band-set .gold { color:var(--gold-lite); }
+  @keyframes marquee { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+  /* sections */
+  section { border-bottom:1px solid var(--rule); }
+  .pad { padding:96px 0; }
+  .kicker { display:flex; align-items:baseline; gap:12px; margin-bottom:18px;
+    font:600 11px/1 Archivo,sans-serif; letter-spacing:.2em; text-transform:uppercase; color:var(--muted); }
+  .kicker b { font-weight:600; color:var(--teal); }
+  h2 { font-family:Spectral,serif; font-weight:400; font-size:clamp(32px,3.6vw,46px);
+    line-height:1.08; letter-spacing:-.02em; margin:0; }
+  .work-head { display:grid; grid-template-columns:1fr auto; gap:56px; align-items:end; margin-bottom:52px; }
+  .work-head p { font:400 16px/1.72 Archivo,sans-serif; color:var(--muted); margin:0; max-width:44ch; text-wrap:pretty; }
+  .doors { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+  .door { display:flex; flex-direction:column; min-height:330px; padding:34px 32px 30px;
+    border:1px solid var(--rule); border-radius:8px;
+    transition:transform .25s ease,border-color .25s,box-shadow .25s; }
+  .door:hover { transform:translateY(-4px); border-color:var(--gold-lite);
+    box-shadow:0 26px 46px -30px rgba(27,42,74,.4); }
+  .door-top { display:flex; align-items:center; justify-content:space-between; margin-bottom:30px; }
+  .door-top b { font:600 11px/1 Archivo,sans-serif; letter-spacing:.18em; color:var(--gold); }
+  .door-top span { font:500 10px/1 Archivo,sans-serif; letter-spacing:.18em; text-transform:uppercase; color:var(--muted); }
+  .door h3 { font-family:Spectral,serif; font-weight:400; font-size:30px; line-height:1.12; margin:0 0 14px; }
+  .door p { font:400 15px/1.68 Archivo,sans-serif; color:var(--muted); margin:0; flex:1; text-wrap:pretty; }
+  .door-go { margin-top:28px; display:inline-flex; align-items:center; gap:8px;
+    font:500 13px/1 Archivo,sans-serif; letter-spacing:.06em; color:var(--teal); }
+  .door:hover .door-go { gap:12px; }
+
+  .prin { display:grid; grid-template-columns:.72fr 1.28fr; gap:64px; align-items:start; }
+  .prin-head { position:sticky; top:120px; }
+  .prin-head h2 { margin-bottom:18px; }
+  .prin-head p { font:400 16px/1.72 Archivo,sans-serif; color:var(--muted); margin:0; max-width:34ch; text-wrap:pretty; }
+  .prin-list { border-top:1px solid var(--navy); }
+  .row { display:grid; grid-template-columns:64px 1fr; gap:28px; padding:30px 0;
+    border-bottom:1px solid var(--rule); transition:background .2s; }
+  .row:hover { background:var(--panel); }
+  .row b { font:500 12px/1 Archivo,sans-serif; letter-spacing:.14em; color:var(--gold); padding-top:9px; }
+  .row h3 { font-family:Spectral,serif; font-weight:400; font-size:26px; line-height:1.15; margin:0 0 8px; }
+  .row p { font:400 15.5px/1.68 Archivo,sans-serif; color:var(--muted); margin:0; max-width:52ch; text-wrap:pretty; }
+
+  .status { background:var(--panel); }
+  .status h2 { margin-bottom:44px; }
+  .status-grid { display:grid; grid-template-columns:1fr 1fr 1fr;
+    border:1px solid var(--rule); border-radius:8px; background:var(--cream); overflow:hidden; }
+  .status-grid > div { padding:36px 34px; border-right:1px solid var(--rule); }
+  .status-grid > div:last-child { border-right:0; }
+  .live { display:inline-flex; align-items:center; gap:9px; font:500 10px/1 Archivo,sans-serif;
+    letter-spacing:.2em; text-transform:uppercase; color:var(--teal); margin-bottom:16px; }
+  .live i { width:6px; height:6px; border-radius:50%; background:var(--teal); }
+  .status-grid h3 { font-family:Spectral,serif; font-weight:400; font-size:26px; line-height:1.15; margin:0 0 12px; }
+  .status-grid p { font:400 15px/1.68 Archivo,sans-serif; color:var(--muted); margin:0; text-wrap:pretty; }
+  .lab { font:500 10px/1 Archivo,sans-serif; letter-spacing:.2em; text-transform:uppercase; margin-bottom:20px; }
+  .lab.yes { color:var(--gold); } .lab.no { color:var(--muted); }
+  ul.list { list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:14px; }
+  ul.list li { position:relative; padding-left:26px; font:400 14.5px/1.55 Archivo,sans-serif; color:var(--navy); }
+  ul.list li::before { content:""; position:absolute; left:0; top:.6em; width:16px; height:1px; background:var(--gold); }
+  ul.list.no li { color:var(--muted); }
+  ul.list.no li::before { background:var(--rule); }
+
+  footer { padding:52px 0 60px; }
+  .foot { max-width:var(--max); margin:0 auto; padding:0 var(--pad);
+    display:grid; grid-template-columns:1fr auto; gap:40px; align-items:end; }
+  .foot-brand { display:flex; align-items:center; gap:16px; }
+  .foot-brand strong { display:block; font-family:Spectral,serif; font-weight:500; font-size:18px; margin-bottom:5px; }
+  .foot-brand span { font:400 13px/1.5 Archivo,sans-serif; color:var(--muted); }
+  .foot-right { text-align:right; }
+  .foot-right nav { display:flex; gap:20px; justify-content:flex-end; margin-bottom:10px; }
+  .foot-right nav a { font:500 13px/1 Archivo,sans-serif; color:var(--teal); }
+  .foot-right nav a:hover { text-decoration:underline; text-underline-offset:3px; }
+  .foot-legal { font:400 11px/1.55 Archivo,sans-serif; color:var(--muted); }
+
+  @media (max-width:1024px) {
+    :root { --pad:40px; }
+    .hero-grid { grid-template-columns:1fr; gap:48px; min-height:0; padding-top:56px; padding-bottom:72px; }
+    .hero-art { order:-1; justify-content:flex-start; }
+    .flabel { display:none; }
+    .mono-spin-wrap { width:200px; height:200px; }
+    .mono-lg span { font-size:52px; }
+    .mono-lg i.t { top:9px; right:9px; width:14px; height:14px; }
+    .work-head { grid-template-columns:1fr; gap:24px; align-items:start; }
+    .doors { grid-template-columns:1fr; }
+    .door { min-height:0; }
+    .prin { grid-template-columns:1fr; gap:36px; }
+    .prin-head { position:static; }
+    .status-grid { grid-template-columns:1fr; }
+    .status-grid > div { border-right:0; border-bottom:1px solid var(--rule); }
+    .status-grid > div:last-child { border-bottom:0; }
+    .foot { grid-template-columns:1fr; align-items:start; }
+    .foot-right { text-align:left; }
+    .foot-right nav { justify-content:flex-start; }
+  }
+  @media (max-width:640px) {
+    :root { --pad:24px; }
+    .pad { padding:64px 0; }
+    .nav-inner { padding:14px var(--pad); }
+    .brand-sub { display:none; }
+    .nav-links { gap:18px; }
+    .nav-links a:not(.nav-cta) { display:none; }
+    .ctas { flex-direction:column; align-items:stretch; }
+    .btn { justify-content:center; min-height:50px; }
+    .row { grid-template-columns:38px 1fr; gap:14px; }
+    .row h3 { font-size:21px; }
+  }
+  @media (prefers-reduced-motion:reduce) {
+    /* Calm everything except the hero monogram spin (Dad lock). */
+    .band-track,.dot,.rise,.mono-spin-wrap::before { animation:none !important; }
+    .rise { opacity:1; transform:none; }
+    html { scroll-behavior:auto; }
+    /* Keep mark turning, slightly slower when Reduce motion is on */
+    .mono-spin { animation: mono-spin 20s linear infinite !important; }
+  }
+</style>
+</head>
+<body id="top">
+
+<header class="nav" id="nav">
+  <div class="nav-inner">
+    <a class="brand" href="#top" aria-label="LZRC home">
+      <div class="mono" aria-hidden="true">
+        <span>L</span><span class="z">Z</span><span>R</span><span>C</span>
+        <i class="v"></i><i class="h"></i><i class="t"></i>
+      </div>
+      <div>
+        <div class="brand-name">LZRC</div>
+        <div class="brand-sub">Research Collaborative</div>
+      </div>
+    </a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="#work">Work</a>
+      <a href="#principles">Principles</a>
+      <a href="#status">Status</a>
+      <a class="nav-cta" href="https://www.linkedin.com/in/kienchil/" target="_blank" rel="noopener">Contact <span aria-hidden="true">↗</span></a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero" aria-label="Introduction">
+    <div class="hero-grid">
+      <div>
+        <div class="eyebrow rise">
+          <span class="dot" aria-hidden="true"></span>
+          <span>Adelaide · Research atelier</span>
+        </div>
+        <h1 class="rise d1">AI that stays<br><em>honest</em> under load.</h1>
+        <hr class="hero-rule rise d2">
+        <p class="hero-lead rise d3">Luu Zaibatsu Research Collaborative</p>
+        <p class="hero-body rise d4">We build continuity, source-bound memory, and human-gated agency for work where fluency is not enough — high-stakes operations, professional desks, and teaching that refuses the hype.</p>
+        <div class="ctas rise d5">
+          <a class="btn btn-primary" href="#work">Enter the work <span aria-hidden="true">→</span></a>
+          <a class="btn btn-ghost" href="https://kienluu78.github.io/keygraph/" target="_blank" rel="noopener">KeyGraph proof</a>
+        </div>
+      </div>
+      <div class="hero-art rise d2" aria-hidden="true">
+        <span class="flabel a">Memory stays ours</span>
+        <span class="flabel b">Verify · don't infer</span>
+        <div class="mono-spin-wrap">
+          <div class="mono mono-lg mono-spin" title="LZRC monogram">
+            <span>L</span><span class="z">Z</span><span>R</span><span>C</span>
+            <i class="v"></i><i class="h"></i><i class="t"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="band" aria-hidden="true">
+    <div class="band-track">
+      <div class="band-set">
+        <span>Source-bound memory</span><i></i><span>Human at the door</span><i></i>
+        <span class="gold">Models interchangeable</span><i></i><span>Teaching without hype</span><i></i>
+        <span>Agent desk rescue</span><i></i><span>Adelaide</span><i></i>
+      </div>
+      <div class="band-set">
+        <span>Source-bound memory</span><i></i><span>Human at the door</span><i></i>
+        <span class="gold">Models interchangeable</span><i></i><span>Teaching without hype</span><i></i>
+        <span>Agent desk rescue</span><i></i><span>Adelaide</span><i></i>
+      </div>
+    </div>
+  </div>
+
+  <section id="work">
+    <div class="wrap pad">
+      <div class="kicker"><b>01</b> The work</div>
+      <div class="work-head">
+        <h2>Three doors. One house.</h2>
+        <p>Not a product catalogue — a research collaborative with live proofs. Pick the door that matches the conversation you are already in.</p>
+      </div>
+      <div class="doors">
+        <a class="door" href="https://kienluu78.github.io/keygraph/" target="_blank" rel="noopener">
+          <div class="door-top"><b>01</b><span>Product proof</span></div>
+          <h3>KeyGraph</h3>
+          <p>An always-on memory agent. Source-bound continuity that holds under real operational load — nothing asserted without a record behind it.</p>
+          <div class="door-go">Open <span aria-hidden="true">→</span></div>
+        </a>
+        <a class="door" href="https://www.linkedin.com/in/kienchil/" target="_blank" rel="noopener">
+          <div class="door-top"><b>02</b><span>Teaching</span></div>
+          <h3>GenAI workshops</h3>
+          <p>Shared vocabulary before enablement: where GenAI fits, how the machine actually learns, and what it cannot be trusted to do. No demo theatre.</p>
+          <div class="door-go">Open <span aria-hidden="true">→</span></div>
+        </a>
+        <a class="door" href="https://www.linkedin.com/in/kienchil/" target="_blank" rel="noopener">
+          <div class="door-top"><b>03</b><span>Desk</span></div>
+          <h3>Agent Desk Rescue</h3>
+          <p>Coding-agent skills, safety rails and operational recovery for teams who already bought the tools and need them to hold under pressure.</p>
+          <div class="door-go">Open <span aria-hidden="true">→</span></div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section id="principles">
+    <div class="wrap pad prin">
+      <div class="prin-head">
+        <div class="kicker"><b>02</b> Principles</div>
+        <h2>Expensive<br>restraint.</h2>
+        <p>The same four rules on every surface — public page, private pilot, teaching room.</p>
+      </div>
+      <div class="prin-list">
+        <div class="row"><b>01</b><div><h3>Verify, don't infer</h3><p>No source in the graph, no claim in the answer. Fluency is free; being right is the product.</p></div></div>
+        <div class="row"><b>02</b><div><h3>A human at the door</h3><p>High-severity actions wait for a logged approval. Write access stays narrower than conversation.</p></div></div>
+        <div class="row"><b>03</b><div><h3>Memory stays ours</h3><p>Weights get replaced. The institutional record does not live inside a vendor's chat log.</p></div></div>
+        <div class="row"><b>04</b><div><h3>Models interchangeable</h3><p>Architecture outlasts any single model. Continuity is the moat — not a brand of weights.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="status" class="status">
+    <div class="wrap pad">
+      <div class="kicker"><b>03</b> Status</div>
+      <h2>What this is — and is not.</h2>
+      <div class="status-grid">
+        <div>
+          <div class="live"><i></i>Active</div>
+          <h3>Private research,<br>Adelaide</h3>
+          <p>LZRC is the research arm of Luu Zaibatsu Pty Ltd. Pilots are packaged carefully and named plainly. We do not ship theatre.</p>
+        </div>
+        <div>
+          <div class="lab yes">Yes — running now</div>
+          <ul class="list">
+            <li>Live KeyGraph product proof</li>
+            <li>Teaching modules in circulation</li>
+            <li>Agent desk enablement</li>
+          </ul>
+        </div>
+        <div>
+          <div class="lab no">No — not this</div>
+          <ul class="list no">
+            <li>A public multi-tenant SaaS</li>
+            <li>Regulated clinical decision support</li>
+            <li>Invented LOIs or client logos</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="foot">
+    <div class="foot-brand">
+      <div class="mono" aria-hidden="true">
+        <span>L</span><span class="z">Z</span><span>R</span><span>C</span>
+        <i class="v"></i><i class="h"></i><i class="t"></i>
+      </div>
+      <div>
+        <strong>Luu Zaibatsu Research Collaborative</strong>
+        <span>Adelaide · South Australia</span>
+      </div>
+    </div>
+    <div class="foot-right">
+      <nav aria-label="Elsewhere">
+        <a href="https://www.linkedin.com/in/kienchil/" target="_blank" rel="noopener">linkedin.com/in/kienchil</a>
+        <a href="https://kienluu78.github.io/keygraph/" target="_blank" rel="noopener">KeyGraph</a>
+      </nav>
+      <div class="foot-legal">Operating vehicle: Luu Zaibatsu Pty Ltd · ABN 21 611 059 815</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    var nav = document.getElementById("nav");
+    var onScroll = function () { nav.classList.toggle("is-scrolled", window.scrollY > 8); };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+  })();
+</script>
+</body>
+</html>
