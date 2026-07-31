@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en"><head>
-<meta name="robots" content="index,follow">
+<meta name="robots" content="noindex,nofollow">
 <style>html,body{background:#FAF8F5}</style>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -13,7 +13,7 @@
 
 <link rel="icon" href="../monogram.svg" type="image/svg+xml">
 
-<meta name="description" content="Invite atelier — source-bound memory demo for KeyGraph. Verify don't infer. Memory stays ours.">
+<meta name="description" content="Invite atelier: source-bound memory demo for KeyGraph. Verify don't infer. Memory stays ours.">
 <meta name="theme-color" content="#FAF8F5">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 
@@ -274,14 +274,14 @@
       items: [
         "Anything with no primary source in the graph. It is returned as <em>not established</em> rather than inferred from adjacent text.",
         "High-severity actions. They are drafted in full, then held at the human door for an accountable signature.",
-        "Clinical decision support. Out of scope here — the atelier does not diagnose, prescribe or treat."
+        "Clinical decision support. Out of scope here. The atelier does not diagnose, prescribe or treat."
       ],
       srcs: ["Architecture note · §2 Provenance", "Operating principles · v0.4", "Atelier pack · scope &amp; limits"],
-      withheld: "One further claim withheld — no source in frame." },
+      withheld: "One further claim withheld: no source in frame." },
 
     { q: "Show provenance for a stored fact",
       lead: "Every node carries its origin.",
-      body: ["A stored fact resolves to the document it entered from — title, version, date and position in the text — so the reader can open the source rather than trust the phrasing.",
+      body: ["A stored fact resolves to the document it entered from (title, version, date and position in the text) so the reader can open the source rather than trust the phrasing.",
              "Where a fact appears in two sources that disagree, both are returned with their versions. The atelier does not pick a winner on the reader's behalf."],
       srcs: ["Architecture note · §2 Provenance", "Atelier pack · worked example 03"] },
 
@@ -293,20 +293,20 @@
 
     { q: "How is continuity kept across days?",
       lead: "State lives in the graph, not the session.",
-      body: ["The agent runs alongside the work and writes what it learns back into the graph, so a hand-off on Thursday opens with Monday's context already in place — no re-briefing, no pasted history."],
+      body: ["The agent runs alongside the work and writes what it learns back into the graph, so a hand-off on Thursday opens with Monday's context already in place: no re-briefing, no pasted history."],
       srcs: ["Architecture note · §3 Always-on agent", "Atelier pack · continuity brief"] },
 
-    { q: "Swap the model — what stays?",
+    { q: "Swap the model: what stays?",
       lead: "The record stays. The reasoning is rented.",
       body: ["The graph stays, with its provenance and the operating record. Weights are a component: swapping them changes how an answer is composed, never what the house holds or who signed for it."],
       srcs: ["Architecture note · §5 Models", "Operating principles · v0.4"] },
 
     { q: "Where does the graph hold no source?",
       lead: "The gaps are published, not hidden.",
-      body: ["This pack is loaded with architecture and operating documents only. It holds no patient data, no institutional records and no private house memory — questions in those areas return as not established.",
+      body: ["This pack is loaded with architecture and operating documents only. It holds no patient data, no institutional records and no private house memory. Questions in those areas return as not established.",
              "That is the honest boundary of a demo. A pilot graph is scoped with the institution that owns the sources."],
       srcs: ["Atelier pack · scope &amp; limits"],
-      withheld: "Two areas out of frame in this pack — see scope note." }
+      withheld: "Two areas out of frame in this pack (see scope note)." }
   ];
 
   var stage = document.getElementById('stage'),
@@ -385,7 +385,7 @@
       body: ["No primary source here supports an answer to that. The atelier holds architecture and operating documents only, so rather than compose something plausible it returns the gap.",
              "Rephrasing toward provenance, the human door, continuity or model swapping will land inside the loaded sources."],
       srcs: null,
-      withheld: "Answer withheld — verify, don't infer."
+      withheld: "Answer withheld. Verify, don't infer."
     };
     setTimeout(function () { addBot(answer); }, reduce ? 0 : 260);
   }
