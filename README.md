@@ -17,6 +17,7 @@ Public splash / hub for Luu Zaibatsu Research Collaborative (Adelaide).
 
 ## Product proof
 - KeyGraph: https://kienluu78.github.io/keygraph/
+- KeyGraph Atelier (text, source-bound demo): https://kienluu78.github.io/lzrc/atelier/
 
 ## Local
 Open `index.html` in a browser, or:
