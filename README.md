@@ -1,26 +1,24 @@
-# LZRC — Luu Zaibatsu Research Collaborative
+# LZRC · Luu Zaibatsu Research Collaborative
 
 **Live:** https://kienluu78.github.io/lzrc/
 
 Public splash / hub for Luu Zaibatsu Research Collaborative (Adelaide).
 
 ## What this is
-- Thin public home: orientation + three doors (KeyGraph, teaching, Agent Desk)
-- House brand: cream / navy / teal / gold · 2×2 monogram
+- Thin public home: orientation + doors (KeyGraph, atelier, teaching, Agent Desk)
+- House brand: cream / navy / teal / gold · 2x2 monogram
 - Operating vehicle named in footer: Luu Zaibatsu Pty Ltd
 
 ## What this is not
-- Not the Fortress (`thesi.luufamily.uk` — private / Basic Auth)
+- Not the Fortress (`thesi.luufamily.uk` is private / Basic Auth)
 - Not multi-tenant SaaS
 - Not regulated clinical decision support
-- Not Maison / Bulgari commercial claims
+- Not invented LOIs or client logos
 
-## Product proof
-- KeyGraph: https://kienluu78.github.io/keygraph/
-- KeyGraph Atelier (text, source-bound demo): https://kienluu78.github.io/lzrc/atelier/
+## Copy rule (Eric 2026-08-01)
+No em dashes (Unicode U+2014) or en dashes (U+2013) in client-facing copy.
+Prefer commas, colons, periods, parentheses, or middots. Long dashes read as AI-written.
 
-## Local
-Open `index.html` in a browser, or:
-```bash
-python3 -m http.server 8765 --directory .
-```
+## Paths
+- Atelier: https://kienluu78.github.io/lzrc/atelier/
+- KeyGraph proof: https://kienluu78.github.io/keygraph/
