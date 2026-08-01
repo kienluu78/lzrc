@@ -47,7 +47,7 @@
     mix-blend-mode:multiply;
     background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   }
-  .wrap { max-width:var(--max); margin:0 auto; padding:0 var(--pad); }
+  .wrap { max-width:var(--max); margin:0 auto; padding-left:var(--pad); padding-right:var(--pad); }
 
   /* mark */
   .mono {
@@ -158,13 +158,15 @@
   .btn-primary:hover { background:var(--teal); border-color:var(--teal); transform:translateY(-1px);
     box-shadow:0 14px 30px -16px rgba(13,107,107,.6); }
   .btn-ghost:hover { border-color:var(--teal); color:var(--teal); transform:translateY(-1px); }
-  .hero-art { position:relative; display:flex; align-items:center; justify-content:center; }
-  .hero-art::before { content:""; position:absolute; width:520px; height:520px; max-width:150%; max-height:150%;
+  .hero-art { position:relative; display:flex; align-items:center; justify-content:center; width:100%; }
+  .hero-art::before { content:""; position:absolute; left:50%; top:50%; transform:translate(-50%,-50%);
+    width:min(520px, 100%); height:min(520px, 100%); aspect-ratio:1;
     border-radius:50%; background:radial-gradient(circle,rgba(13,107,107,.13) 0%,rgba(13,107,107,.04) 42%,rgba(13,107,107,0) 68%); }
   .flabel { position:absolute; font:500 10px/1 Archivo,sans-serif; letter-spacing:.2em;
     text-transform:uppercase; color:var(--muted); white-space:nowrap; }
-  .flabel.a { top:2%; left:1%; }
-  .flabel.b { bottom:4%; right:1%; color:var(--teal); }
+  /* centered on monogram orbit; avoids left/right clip */
+  .flabel.a { top:6%; left:50%; transform:translateX(-50%); text-align:center; }
+  .flabel.b { bottom:6%; left:50%; transform:translateX(-50%); color:var(--teal); text-align:center; }
   .rise { animation:rise .9s cubic-bezier(.22,1,.36,1) both; }
   .d1{animation-delay:.08s}.d2{animation-delay:.16s}.d3{animation-delay:.24s}.d4{animation-delay:.32s}.d5{animation-delay:.4s}
   @keyframes rise { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:none} }
@@ -181,10 +183,22 @@
 
   /* sections */
   section { border-bottom:1px solid var(--rule); }
-  .pad { padding:96px 0; }
-  .kicker { display:flex; align-items:baseline; gap:12px; margin-bottom:18px;
+  /* vertical only; do not shorthand-reset .wrap horizontal pad */
+  .pad { padding-top:96px; padding-bottom:96px; }
+  .kicker { display:flex; align-items:baseline; gap:12px; margin-bottom:14px;
     font:600 11px/1 Archivo,sans-serif; letter-spacing:.2em; text-transform:uppercase; color:var(--muted); }
+  .kicker::after {
+    content:""; flex:1; max-width:72px; height:1px; margin-left:6px;
+    background:linear-gradient(90deg, var(--gold), var(--gold-lite), transparent);
+    align-self:center;
+  }
   .kicker b { font-weight:600; color:var(--teal); }
+  .section-rule {
+    width:72px; height:1px; border:0; margin:0 0 28px;
+    background:linear-gradient(90deg, var(--gold), var(--gold-lite));
+  }
+  .doors .door { background: var(--cream); }
+  .status .status-grid { box-shadow: 0 0 0 1px rgba(166,124,45,.14); }
   h2 { font-family:Spectral,serif; font-weight:400; font-size:clamp(32px,3.6vw,46px);
     line-height:1.08; letter-spacing:-.02em; margin:0; }
   .work-head { display:grid; grid-template-columns:1fr auto; gap:56px; align-items:end; margin-bottom:52px; }
@@ -253,16 +267,27 @@
     .hero-grid { grid-template-columns:1fr; gap:48px; min-height:0; padding-top:56px; padding-bottom:72px; }
     /* Stack: principle · monogram · principle  -  labels were display:none (Dad mobile report 2026-07-31) */
     .hero-art {
-      order:-1; justify-content:flex-start; align-items:flex-start;
-      flex-direction:column; gap:14px; min-height:0;
+      order:-1;
+      justify-content:center;
+      align-items:center;
+      flex-direction:column;
+      gap:16px;
+      min-height:0;
+      text-align:center;
+      width:100%;
     }
-    .hero-art::before { width:280px; height:280px; max-width:100%; }
+    .hero-art::before {
+      width:280px; height:280px; max-width:100%;
+      left:50%; top:50%; transform:translate(-50%,-50%);
+    }
     .flabel {
       display:block; position:static; white-space:normal;
-      font-size:11px; letter-spacing:.16em; line-height:1.35; max-width:28ch;
+      font-size:11px; letter-spacing:.16em; line-height:1.35;
+      max-width:32ch; text-align:center; margin:0 auto;
+      transform:none; left:auto; right:auto; top:auto; bottom:auto;
     }
     .flabel.a { order:1; color:var(--muted); }
-    .mono-spin-wrap { order:2; width:200px; height:200px; }
+    .mono-spin-wrap { order:2; width:200px; height:200px; margin:0 auto; }
     .flabel.b { order:3; color:var(--teal); }
     .mono-lg span { font-size:52px; }
     .mono-lg i.t { top:9px; right:9px; width:14px; height:14px; }
@@ -280,32 +305,30 @@
   }
   @media (max-width:640px) {
     :root {
-      --pad: max(20px, env(safe-area-inset-left, 0px) + 18px);
-      --pad-r: max(20px, env(safe-area-inset-right, 0px) + 18px);
-      --pad-y: 20px;
+      --pad: max(24px, env(safe-area-inset-left, 0px) + 20px);
     }
-    /* Horizontal inset on all page chrome so cards never kiss the screen edge */
-    .wrap { padding-left: var(--pad); padding-right: var(--pad-r); }
-    .nav-inner { padding: 14px var(--pad) 14px var(--pad); padding-right: var(--pad-r); }
-    .hero-grid {
-      padding-left: var(--pad);
-      padding-right: var(--pad-r);
-      padding-top: 48px;
-      padding-bottom: 64px;
+    /* Same horizontal inset on every content shell (work / principles / status / hero / nav / foot) */
+    .wrap,
+    .nav-inner,
+    .hero-grid,
+    .foot {
+      padding-left: var(--pad) !important;
+      padding-right: var(--pad) !important;
     }
-    .foot { padding-left: var(--pad); padding-right: var(--pad-r); }
-    .pad { padding: 56px 0; }
+    .nav-inner { padding-top: 14px; padding-bottom: 14px; }
+    .hero-grid { padding-top: 48px; padding-bottom: 64px; }
+    .pad { padding-top: 56px; padding-bottom: 56px; }
     .door { padding: 28px 22px 26px; }
     .status-grid > div { padding: 28px 22px; }
-    .row { grid-template-columns: 38px 1fr; gap: 14px; padding-left: 4px; padding-right: 4px; }
+    .row { grid-template-columns: 38px 1fr; gap: 14px; }
     .row h3 { font-size: 21px; }
     .brand-sub { display: none; }
     .nav-links { gap: 18px; }
     .nav-links a:not(.nav-cta) { display: none; }
     .ctas { flex-direction: column; align-items: stretch; }
     .btn { justify-content: center; min-height: 50px; }
-    /* Marquee band: slight inner text breathing (track stays full-bleed navy) */
-    .band { padding: 22px max(12px, env(safe-area-inset-left)) 22px max(12px, env(safe-area-inset-right)); }
+    .band { padding: 22px 0; }
+    .band-set { padding-left: var(--pad); }
   }
   @media (prefers-reduced-motion:reduce) {
     /* Calm everything except the hero monogram spin (Dad lock). */
@@ -328,7 +351,7 @@
       </div>
       <div>
         <div class="brand-name">LZRC</div>
-        <div class="brand-sub">Research Collaborative</div>
+        <div class="brand-sub">Luu Zaibatsu Research Collaborative</div>
       </div>
     </a>
     <nav class="nav-links" aria-label="Primary">
@@ -390,6 +413,7 @@
   <section id="work">
     <div class="wrap pad">
       <div class="kicker"><b>01</b> The work</div>
+      <hr class="section-rule" aria-hidden="true">
       <div class="work-head">
         <h2>Four doors. One house.</h2>
         <p>Not a product catalogue. A research collaborative with live proofs. Pick the door that matches the conversation you are already in.</p>
@@ -427,6 +451,7 @@
     <div class="wrap pad prin">
       <div class="prin-head">
         <div class="kicker"><b>02</b> Principles</div>
+        <hr class="section-rule" aria-hidden="true">
         <h2>Expensive<br>restraint.</h2>
         <p>The same four rules on every surface: public page, private pilot, teaching room.</p>
       </div>
@@ -442,6 +467,7 @@
   <section id="status" class="status">
     <div class="wrap pad">
       <div class="kicker"><b>03</b> Status</div>
+      <hr class="section-rule" aria-hidden="true">
       <h2>What this is, and is not.</h2>
       <div class="status-grid">
         <div>
