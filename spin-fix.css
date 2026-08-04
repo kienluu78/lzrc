@@ -1,0 +1,39 @@
+/* LZRC hero monogram spin fix 2026-08-04 */
+.mono-spin {
+  animation: mono-spin 8s linear infinite !important;
+  transform-origin: 50% 50% !important;
+  will-change: transform;
+  backface-visibility: hidden;
+}
+@keyframes mono-spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+.mono-spin-wrap {
+  isolation: isolate;
+  position: relative;
+}
+.mono-spin-wrap::before {
+  content: "" !important;
+  position: absolute !important;
+  inset: -12% !important;
+  border-radius: 50% !important;
+  pointer-events: none !important;
+  z-index: 0 !important;
+  border: 1px solid rgba(166, 124, 45, 0.28) !important;
+  border-top-color: rgba(166, 124, 45, 0.55) !important;
+  border-right-color: rgba(166, 124, 45, 0.12) !important;
+  animation: mono-orbit 8s linear infinite reverse !important;
+}
+@keyframes mono-orbit {
+  0%   { transform: rotate(0deg) scale(1); opacity: 0.55; }
+  50%  { transform: rotate(180deg) scale(1.03); opacity: 0.95; }
+  100% { transform: rotate(360deg) scale(1); opacity: 0.55; }
+}
+.mono-spin-wrap .mono-spin { position: relative; z-index: 1; }
+@media (prefers-reduced-motion: reduce) {
+  .band-track, .dot, .rise { animation: none !important; }
+  .rise { opacity: 1 !important; transform: none !important; }
+  .mono-spin { animation: mono-spin 10s linear infinite !important; }
+  .mono-spin-wrap::before { animation: mono-orbit 10s linear infinite reverse !important; }
+}
