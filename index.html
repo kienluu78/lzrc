@@ -10,8 +10,8 @@
 <style>html,body{margin:0;background:#FAF8F5;color:#1B2A4A;font-family:Archivo,system-ui,sans-serif}</style>
 <script>
 (async function () {
-  // Pin prior splash body; overlay spin-fix + speed so monogram is visibly animated
-  var src = 'https://raw.githubusercontent.com/kienluu78/lzrc/6a419e39f06e50aa3a310478fa0ac92c8c0d2db6/index.html';
+  // Pin prior splash body (commit 6a3a917); overlay spin-fix + speed so monogram is visibly animated
+  var src = 'https://raw.githubusercontent.com/kienluu78/lzrc/6a3a9170f942611fc8982d830e945919f6b8125a/index.html';
   try {
     var res = await fetch(src, { cache: 'no-store' });
     if (!res.ok) throw new Error('fetch ' + res.status);
@@ -32,8 +32,9 @@
   } catch (e) {
     document.body.innerHTML = '<main style="padding:48px;max-width:40rem;margin:0 auto">' +
       '<h1 style="font-family:Georgia,serif;font-weight:400">LZRC</h1>' +
-      '<p>Could not load splash. Open the house copy or retry.</p>' +
-      '<p><a href="https://kienluu78.github.io/lzrc/spin-fix.css">spin-fix.css</a> is live.</p>' +
+      '<p>Could not load splash. Try the house copy:</p>' +
+      '<p><a href="http://127.0.0.1/dashboard/lzrc/">local splash</a> · ' +
+      '<a href="spin-fix.css">spin-fix.css</a></p>' +
       '<pre style="color:#5C6578;font-size:12px">' + String(e) + '</pre></main>';
   }
 })();
