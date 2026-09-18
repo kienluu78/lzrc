@@ -10,13 +10,21 @@
 <style>html,body{margin:0;background:#FAF8F5;color:#1B2A4A;font-family:Archivo,system-ui,sans-serif}</style>
 <script>
 (async function () {
-  // Pin prior splash body (commit 6a3a917); overlay spin-fix + speed so monogram is visibly animated
+  // Pin prior splash body (commit 6a3a917); overlay spin-fix + legal entity (ACN 702 511 037).
   var src = 'https://raw.githubusercontent.com/kienluu78/lzrc/6a3a9170f942611fc8982d830e945919f6b8125a/index.html';
   try {
     var res = await fetch(src, { cache: 'no-store' });
     if (!res.ok) throw new Error('fetch ' + res.status);
     var html = await res.text();
     html = html
+      .replace(
+        'LZRC is the research arm of Luu Zaibatsu Pty Ltd. Pilots are packaged carefully and named plainly. We do not ship theatre.',
+        'LZRC is Luu Zaibatsu Research Collaborative Pty Ltd, a private Adelaide research company. Pilots are packaged carefully and named plainly. We do not ship theatre.'
+      )
+      .replace(
+        'Operating vehicle: Luu Zaibatsu Pty Ltd \u00b7 ABN 21 611 059 815',
+        'Luu Zaibatsu Research Collaborative Pty Ltd \u00b7 ACN 702 511 037'
+      )
       .replace(/<\/head>/i, '<link rel="stylesheet" href="spin-fix.css">\n</head>')
       .replace(/class="hero-art rise[^"]*"/g, 'class="hero-art"')
       .replace(/mono-spin 12s/g, 'mono-spin 8s')
@@ -32,9 +40,8 @@
   } catch (e) {
     document.body.innerHTML = '<main style="padding:48px;max-width:40rem;margin:0 auto">' +
       '<h1 style="font-family:Georgia,serif;font-weight:400">LZRC</h1>' +
-      '<p>Could not load splash. Try the house copy:</p>' +
-      '<p><a href="http://127.0.0.1/dashboard/lzrc/">local splash</a> · ' +
-      '<a href="spin-fix.css">spin-fix.css</a></p>' +
+      '<p>Could not load splash.</p>' +
+      '<p><a href="spin-fix.css">spin-fix.css</a></p>' +
       '<pre style="color:#5C6578;font-size:12px">' + String(e) + '</pre></main>';
   }
 })();
