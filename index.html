@@ -10,7 +10,6 @@
 <style>html,body{margin:0;background:#FAF8F5;color:#1B2A4A;font-family:Archivo,system-ui,sans-serif}</style>
 <script>
 (async function () {
-  // Pin prior splash body (commit 6a3a917); overlay spin-fix + legal entity (ACN 702 511 037).
   var src = 'https://raw.githubusercontent.com/kienluu78/lzrc/6a3a9170f942611fc8982d830e945919f6b8125a/index.html';
   try {
     var res = await fetch(src, { cache: 'no-store' });
@@ -21,10 +20,8 @@
         'LZRC is the research arm of Luu Zaibatsu Pty Ltd. Pilots are packaged carefully and named plainly. We do not ship theatre.',
         'LZRC is Luu Zaibatsu Research Collaborative Pty Ltd, a private Adelaide research company. Pilots are packaged carefully and named plainly. We do not ship theatre.'
       )
-      .replace(
-        'Operating vehicle: Luu Zaibatsu Pty Ltd · ABN 21 611 059 815',
-        'Luu Zaibatsu Research Collaborative Pty Ltd · ACN 702 511 037'
-      )
+      .replace('Operating vehicle: Luu Zaibatsu Pty Ltd', 'Luu Zaibatsu Research Collaborative Pty Ltd')
+      .replace('ABN 21 611 059 815', 'ACN 702 511 037')
       .replace(/<\/head>/i, '<link rel="stylesheet" href="spin-fix.css">\n</head>')
       .replace(/class="hero-art rise[^"]*"/g, 'class="hero-art"')
       .replace(/mono-spin 12s/g, 'mono-spin 8s')
@@ -48,6 +45,6 @@
 </script>
 </head>
 <body>
-  <p style="padding:48px;opacity:.7">Loading LZRC…</p>
+  <p style="padding:48px;opacity:.7">Loading LZRC...</p>
 </body>
 </html>
