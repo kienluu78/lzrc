@@ -1,50 +1,742 @@
 <!DOCTYPE html>
+<!-- LZRC splash · Eric copy + Design polish 012 · nav plate sting DNA + hero spin restored 2026-08-04 -->
 <html lang="en-AU">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>LZRC · Luu Zaibatsu Research Collaborative</title>
-<meta name="description" content="Luu Zaibatsu Research Collaborative. Adelaide research atelier for AI that stays honest under load.">
+<meta name="description" content="Luu Zaibatsu Research Collaborative. Adelaide research atelier for AI that stays honest under load: memory stays yours, human-gated agency, no vendor lock-in on the institutional record.">
 <meta name="robots" content="index,follow">
+<meta property="og:type" content="website">
+<meta property="og:title" content="LZRC · Luu Zaibatsu Research Collaborative">
+<meta property="og:description" content="Research atelier for AI that stays honest under load. Adelaide. Memory stays yours. Models interchangeable.">
+<meta property="og:url" content="https://kienluu78.github.io/lzrc/">
+<meta property="og:image" content="https://kienluu78.github.io/lzrc/og.png">
+<meta property="og:image:width" content="1024">
+<meta property="og:image:height" content="1024">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="LZRC · Luu Zaibatsu Research Collaborative">
+<meta name="twitter:description" content="Research atelier for AI that stays honest under load. Adelaide.">
+<meta name="twitter:image" content="https://kienluu78.github.io/lzrc/og.png">
 <link rel="icon" href="monogram.svg" type="image/svg+xml">
-<style>html,body{margin:0;background:#FAF8F5;color:#1B2A4A;font-family:Archivo,system-ui,sans-serif}</style>
-<script>
-(async function () {
-  var src = 'https://raw.githubusercontent.com/kienluu78/lzrc/6a3a9170f942611fc8982d830e945919f6b8125a/index.html';
-  try {
-    var res = await fetch(src, { cache: 'no-store' });
-    if (!res.ok) throw new Error('fetch ' + res.status);
-    var html = await res.text();
-    html = html
-      .replace(
-        'LZRC is the research arm of Luu Zaibatsu Pty Ltd. Pilots are packaged carefully and named plainly. We do not ship theatre.',
-        'LZRC is Luu Zaibatsu Research Collaborative Pty Ltd, a private Adelaide research company. Pilots are packaged carefully and named plainly. We do not ship theatre.'
-      )
-      .replace('Operating vehicle: Luu Zaibatsu Pty Ltd', 'Luu Zaibatsu Research Collaborative Pty Ltd')
-      .replace('ABN 21 611 059 815', 'ACN 702 511 037')
-      .replace(/<\/head>/i, '<link rel="stylesheet" href="spin-fix.css">\n</head>')
-      .replace(/class="hero-art rise[^"]*"/g, 'class="hero-art"')
-      .replace(/mono-spin 12s/g, 'mono-spin 8s')
-      .replace(/mono-orbit 12s/g, 'mono-orbit 8s')
-      .replace(/mono-spin 20s/g, 'mono-spin 10s')
-      .replace(
-        '.band-track,.dot,.rise,.mono-spin-wrap::before { animation:none !important; }',
-        '.band-track,.dot,.rise { animation:none !important; }'
-      );
-    document.open();
-    document.write(html);
-    document.close();
-  } catch (e) {
-    document.body.innerHTML = '<main style="padding:48px;max-width:40rem;margin:0 auto">' +
-      '<h1 style="font-family:Georgia,serif;font-weight:400">LZRC</h1>' +
-      '<p>Could not load splash.</p>' +
-      '<p><a href="spin-fix.css">spin-fix.css</a></p>' +
-      '<pre style="color:#5C6578;font-size:12px">' + String(e) + '</pre></main>';
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,500;0,600;1,400&family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream:#FAF8F5; --panel:#F3EEE6; --navy:#1B2A4A; --teal:#0D6B6B;
+    --gold:#A67C2D; --gold-lite:#C4A35A; --muted:#5C6578; --rule:#D4CBB8;
+    --max:1240px; --pad:72px;
   }
-})();
-</script>
+  *,*::before,*::after { box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  html,body {
+    margin:0; padding:0; background:var(--cream); color:var(--navy);
+    font-family:Archivo,system-ui,-apple-system,sans-serif;
+    -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+  }
+  body {
+    padding-left: env(safe-area-inset-left, 0px);
+    padding-right: env(safe-area-inset-right, 0px);
+  }
+  img,svg { max-width:100%; display:block; }
+  a { color:inherit; text-decoration:none; }
+  ::selection { background:rgba(13,107,107,.16); }
+  :focus-visible { outline:1.5px solid var(--teal); outline-offset:3px; }
+  body::before {
+    content:""; position:fixed; inset:0; pointer-events:none; z-index:100; opacity:.035;
+    mix-blend-mode:multiply;
+    background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  .wrap { max-width:var(--max); margin:0 auto; padding-left:var(--pad); padding-right:var(--pad); }
+
+  /* mark */
+  .mono {
+    position:relative; width:40px; height:40px; flex:0 0 auto;
+    border:1px solid var(--navy); border-radius:5px; background:var(--cream);
+    display:grid; grid-template-columns:1fr 1fr; grid-template-rows:1fr 1fr;
+  }
+  .mono span {
+    display:flex; align-items:center; justify-content:center;
+    font-family:Spectral,serif; font-weight:400; font-size:13px; line-height:1; color:var(--navy);
+  }
+  .mono span:nth-child(1),.mono span:nth-child(2) { padding-bottom:1px; }
+  .mono .z { color:var(--teal); }
+  .mono i.v { position:absolute; left:50%; top:19%; bottom:19%; width:1px; background:var(--rule); }
+  .mono i.h { position:absolute; top:50%; left:19%; right:19%; height:1px; background:var(--rule); }
+  .mono i.t { position:absolute; top:4px; right:4px; width:6px; height:6px; border-top:1px solid var(--gold); border-right:1px solid var(--gold); }
+  .mono-lg { width:300px; height:300px; border-width:1.5px; border-radius:10px;
+    box-shadow:0 0 0 1px rgba(166,124,45,.16), 0 50px 90px -40px rgba(27,42,74,.3);
+    will-change:transform; }
+  .mono-lg span { font-weight:300; font-size:78px; }
+  .mono-lg span:nth-child(1),.mono-lg span:nth-child(2) { padding-bottom:6px; }
+  .mono-lg i.v,.mono-lg i.h { background:var(--navy); opacity:.55; }
+  .mono-lg i.t { top:11px; right:11px; width:20px; height:20px; border-width:1.5px; }
+
+  /* Hero monogram  -  continuous spin (nav mark stays still).
+     Intentional product motion: keeps spinning under prefers-reduced-motion
+     (macOS Reduce Motion was killing the spin; slow 20s also read as "frozen"). */
+  .mono-spin-wrap {
+    position: relative;
+    z-index: 1;
+    width: 300px;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    isolation: isolate;
+    animation: mono-fade 0.8s ease both;
+  }
+  @keyframes mono-fade {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+  .mono-spin-wrap .mono-lg {
+    width: 100%;
+    height: 100%;
+  }
+  .mono-spin {
+    /* MUST be the transform owner  -  never put .rise (translateY) on an ancestor of this node */
+    animation: mono-spin 8s linear infinite !important;
+    transform-origin: 50% 50%;
+    will-change: transform;
+    backface-visibility: hidden;
+  }
+  @keyframes mono-spin {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+  }
+  /* Soft counter ring  -  makes motion readable at a glance */
+  .mono-spin-wrap::before {
+    content: "";
+    position: absolute;
+    inset: -12%;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 0;
+    border: 1px solid rgba(166, 124, 45, 0.28);
+    border-top-color: rgba(166, 124, 45, 0.55);
+    border-right-color: rgba(166, 124, 45, 0.12);
+    animation: mono-orbit 8s linear infinite reverse;
+  }
+  @keyframes mono-orbit {
+    0%   { transform: rotate(0deg) scale(1); opacity: 0.55; }
+    50%  { transform: rotate(180deg) scale(1.03); opacity: 0.95; }
+    100% { transform: rotate(360deg) scale(1); opacity: 0.55; }
+  }
+  .mono-spin-wrap .mono-spin { position: relative; z-index: 1; }
+
+
+  /* LZRC brand sting (hero art) */
+  .hero-sting {
+    position: relative;
+    z-index: 1;
+    width: min(520px, 100%);
+    max-width: 100%;
+    aspect-ratio: 16 / 9;
+    border-radius: 10px;
+    overflow: hidden;
+    background: var(--cream);
+    box-shadow: 0 0 0 1px rgba(166,124,45,.16), 0 50px 90px -40px rgba(27,42,74,.3);
+  }
+  .hero-sting video {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    background: #faf8f5;
+  }
+  /* hero spin restored 2026-08-04; full sting stays as media asset for other uses */
+  @media (prefers-reduced-motion: reduce) {
+    .hero-sting video { display: none; }
+    .hero-sting {
+      background: #faf8f5 url("media/lzrc-sting-poster.png") center / contain no-repeat;
+      min-height: 220px;
+    }
+  }
+  @media (max-width:1024px) {
+    .hero-sting { width: min(420px, 92vw); margin: 0 auto; }
+  }
+
+
+  /* Nav plate  -  compact sting DNA (teal Z, gold corner tick) */
+  .nav-plate {
+    width: 40px; height: 40px; flex: 0 0 auto;
+    display: block;
+    overflow: visible;
+  }
+  .nav-plate .np-border {
+    fill: none; stroke: var(--navy); stroke-width: 1.6;
+    stroke-dasharray: 152; stroke-dashoffset: 152;
+    animation: np-draw 0.9s cubic-bezier(.22,1,.36,1) 0.15s forwards;
+  }
+  .nav-plate .np-cross {
+    fill: none; stroke: var(--rule); stroke-width: 1;
+    stroke-dasharray: 40; stroke-dashoffset: 40;
+    animation: np-draw 0.45s ease-out 0.55s forwards;
+  }
+  .nav-plate .np-tick {
+    fill: none; stroke: var(--gold); stroke-width: 2.2;
+    stroke-linecap: square; stroke-linejoin: miter;
+    stroke-dasharray: 28; stroke-dashoffset: 28;
+    animation: np-draw 0.4s ease-out 1.15s forwards;
+  }
+  .nav-plate .np-ltr {
+    font-family: Spectral, Georgia, serif;
+    font-size: 13px; font-weight: 400;
+    fill: var(--navy);
+    opacity: 0;
+    animation: np-letter 0.45s ease-out forwards;
+  }
+  .nav-plate .np-ltr.z { fill: var(--teal); }
+  .nav-plate .np-ltr.l { animation-delay: 0.85s; }
+  .nav-plate .np-ltr.r { animation-delay: 0.92s; }
+  .nav-plate .np-ltr.c { animation-delay: 0.99s; }
+  .nav-plate .np-ltr.z { animation-delay: 1.06s; }
+  @keyframes np-draw {
+    to { stroke-dashoffset: 0; }
+  }
+  @keyframes np-letter {
+    from { opacity: 0; transform: translateY(2px); }
+    to   { opacity: 1; transform: none; }
+  }
+  /* SVG text transform needs transform-box */
+  .nav-plate .np-ltr {
+    transform-box: fill-box;
+    transform-origin: center;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .nav-plate .np-border,
+    .nav-plate .np-cross,
+    .nav-plate .np-tick,
+    .nav-plate .np-ltr {
+      animation: none !important;
+      stroke-dashoffset: 0 !important;
+      opacity: 1 !important;
+    }
+  }
+
+  /* nav */
+  .nav { position:sticky; top:0; z-index:50; background:rgba(250,248,245,.86);
+    backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px);
+    border-bottom:1px solid transparent; transition:border-color .3s ease; }
+  .nav.is-scrolled { border-bottom-color:var(--rule); }
+  .nav-inner { max-width:var(--max); margin:0 auto; padding:20px var(--pad);
+    display:flex; align-items:center; justify-content:space-between; gap:24px; }
+  .brand { display:flex; align-items:center; gap:14px; }
+  .brand-name { font-family:Spectral,serif; font-weight:500; font-size:17px; letter-spacing:.06em; }
+  .brand-sub { font:500 9px/1 Archivo,sans-serif; letter-spacing:.2em; text-transform:uppercase; color:var(--muted); }
+  .nav-links { display:flex; align-items:center; gap:34px; }
+  .nav-links a { font:500 12.5px/1 Archivo,sans-serif; letter-spacing:.06em; transition:color .2s; }
+  .nav-links a:hover { color:var(--teal); }
+  .nav-cta { display:inline-flex; align-items:center; gap:9px; padding:11px 18px;
+    border:1px solid var(--navy); border-radius:4px; transition:border-color .2s,color .2s; }
+  .nav-cta span { color:var(--gold); }
+  .nav-cta:hover { border-color:var(--teal); }
+  .nav-book { color:var(--teal); font-weight:600; }
+
+  /* hero */
+  .hero { border-bottom:1px solid var(--rule); }
+  .hero-grid { max-width:var(--max); margin:0 auto; padding:96px var(--pad) 104px;
+    display:grid; grid-template-columns:1.14fr .86fr; gap:64px; align-items:center;
+    min-height:calc(100vh - 82px); min-height:calc(100dvh - 82px); }
+  .eyebrow { display:inline-flex; align-items:center; gap:12px; margin-bottom:34px; }
+  .dot { width:6px; height:6px; border-radius:50%; background:var(--teal); animation:pulse 3s ease-in-out infinite; }
+  @keyframes pulse { 0%,100%{box-shadow:0 0 0 4px rgba(13,107,107,.14)} 50%{box-shadow:0 0 0 9px rgba(13,107,107,.05)} }
+  .eyebrow span:last-child { font:600 11px/1 Archivo,sans-serif; letter-spacing:.24em; text-transform:uppercase; color:var(--muted); }
+  .hero h1 { font-family:Spectral,serif; font-weight:300; font-size:clamp(46px,6.4vw,88px);
+    line-height:.96; letter-spacing:-.035em; margin:0; }
+  .hero h1 em { font-style:italic; font-weight:400; color:var(--teal); }
+  .hero-rule { width:88px; height:1px; border:0; background:linear-gradient(90deg,var(--gold),var(--gold-lite)); margin:36px 0 26px; }
+  .hero-lead { font-family:Spectral,serif; font-size:clamp(19px,2vw,25px); line-height:1.3; letter-spacing:-.01em; margin:0 0 20px; }
+  .hero-body { font:400 16.5px/1.72 Archivo,sans-serif; color:var(--muted); margin:0 0 40px; max-width:46ch; text-wrap:pretty; }
+  .ctas { display:flex; flex-wrap:wrap; gap:14px; }
+  .btn { display:inline-flex; align-items:center; gap:11px; padding:16px 26px; border:1px solid var(--navy);
+    border-radius:4px; font:500 13px/1 Archivo,sans-serif; letter-spacing:.08em;
+    transition:background .2s,border-color .2s,color .2s,transform .2s,box-shadow .2s; }
+  .btn-primary { background:var(--navy); color:var(--cream); }
+  .btn-primary span { color:var(--gold-lite); }
+  .btn-primary:hover { background:var(--teal); border-color:var(--teal); transform:translateY(-1px);
+    box-shadow:0 14px 30px -16px rgba(13,107,107,.6); }
+  .btn-ghost:hover { border-color:var(--teal); color:var(--teal); transform:translateY(-1px); }
+
+  /* book / discovery */
+  .book-grid {
+    display:grid; grid-template-columns:1.1fr .9fr; gap:48px; align-items:start;
+  }
+  .book-card {
+    border:1px solid var(--rule); border-radius:8px; background:var(--cream);
+    padding:36px 34px 32px;
+    box-shadow:0 0 0 1px rgba(166,124,45,.12);
+  }
+  .book-card h3 {
+    font-family:Spectral,serif; font-weight:400; font-size:28px; line-height:1.15;
+    margin:0 0 12px;
+  }
+  .book-card p {
+    font:400 15.5px/1.68 Archivo,sans-serif; color:var(--muted); margin:0 0 22px;
+    max-width:42ch; text-wrap:pretty;
+  }
+  .book-meta {
+    list-style:none; margin:0 0 28px; padding:0; display:flex; flex-direction:column; gap:12px;
+  }
+  .book-meta li {
+    position:relative; padding-left:26px;
+    font:400 14.5px/1.55 Archivo,sans-serif; color:var(--navy);
+  }
+  .book-meta li::before {
+    content:""; position:absolute; left:0; top:.65em; width:16px; height:1px; background:var(--gold);
+  }
+  .book-note {
+    margin-top:18px; font:400 13px/1.55 Archivo,sans-serif; color:var(--muted);
+  }
+  .book-note[hidden] { display:none !important; }
+  .book-aside .kicker { margin-bottom:18px; }
+  .book-aside p {
+    font:400 15.5px/1.68 Archivo,sans-serif; color:var(--muted); margin:0 0 16px;
+    max-width:36ch; text-wrap:pretty;
+  }
+
+  .hero-art { position:relative; display:flex; align-items:center; justify-content:center; width:100%; }
+  .hero-art::before { content:""; position:absolute; left:50%; top:50%; transform:translate(-50%,-50%);
+    width:min(520px, 100%); height:min(520px, 100%); aspect-ratio:1;
+    border-radius:50%; background:radial-gradient(circle,rgba(13,107,107,.13) 0%,rgba(13,107,107,.04) 42%,rgba(13,107,107,0) 68%); }
+  .flabel { position:absolute; z-index:2; font:500 10px/1 Archivo,sans-serif; letter-spacing:.2em;
+    text-transform:uppercase; color:var(--muted); white-space:nowrap; pointer-events:none; }
+  /* Desktop orientation (pre-center): Memory top-left, Verify bottom-right under monogram orbit */
+  .flabel.a { top:2%; left:1%; transform:none; text-align:left; }
+  .flabel.b { bottom:4%; right:1%; left:auto; transform:none; color:var(--teal); text-align:right; }
+  .rise { animation:rise .9s cubic-bezier(.22,1,.36,1) both; }
+  .d1{animation-delay:.08s}.d2{animation-delay:.16s}.d3{animation-delay:.24s}.d4{animation-delay:.32s}.d5{animation-delay:.4s}
+  @keyframes rise { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:none} }
+
+  /* band */
+  .band { background:var(--navy); padding:26px 0; overflow:hidden; }
+  .band-track { display:flex; width:max-content; animation:marquee 34s linear infinite; }
+  .band-set { display:flex; align-items:center; gap:40px; padding-right:40px;
+    font:500 11.5px/1 Archivo,sans-serif; letter-spacing:.22em; text-transform:uppercase;
+    color:rgba(250,248,245,.8); white-space:nowrap; }
+  .band-set i { width:4px; height:4px; border-radius:50%; background:var(--teal); }
+  .band-set .gold { color:var(--gold-lite); }
+  @keyframes marquee { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+  /* sections */
+  section { border-bottom:1px solid var(--rule); }
+  /* vertical only; do not shorthand-reset .wrap horizontal pad */
+  .pad { padding-top:96px; padding-bottom:96px; }
+  .kicker { display:flex; align-items:baseline; gap:12px; margin-bottom:14px;
+    font:600 11px/1 Archivo,sans-serif; letter-spacing:.2em; text-transform:uppercase; color:var(--muted); }
+  .kicker::after {
+    content:""; flex:1; max-width:72px; height:1px; margin-left:6px;
+    background:linear-gradient(90deg, var(--gold), var(--gold-lite), transparent);
+    align-self:center;
+  }
+  .kicker b { font-weight:600; color:var(--teal); }
+  .section-rule {
+    width:72px; height:1px; border:0; margin:0 0 28px;
+    background:linear-gradient(90deg, var(--gold), var(--gold-lite));
+  }
+  .doors .door { background: var(--cream); }
+  .status .status-grid { box-shadow: 0 0 0 1px rgba(166,124,45,.14); }
+  h2 { font-family:Spectral,serif; font-weight:400; font-size:clamp(32px,3.6vw,46px);
+    line-height:1.08; letter-spacing:-.02em; margin:0; }
+  .work-head { display:grid; grid-template-columns:1fr auto; gap:56px; align-items:end; margin-bottom:52px; }
+  .work-head p { font:400 16px/1.72 Archivo,sans-serif; color:var(--muted); margin:0; max-width:44ch; text-wrap:pretty; }
+  .doors { display:grid; grid-template-columns:repeat(2,1fr); gap:24px; }
+  @media (min-width:1100px) { .doors { grid-template-columns:repeat(4,1fr); } }
+  .door { display:flex; flex-direction:column; min-height:330px; padding:34px 32px 30px;
+    border:1px solid var(--rule); border-radius:8px;
+    transition:transform .25s ease,border-color .25s,box-shadow .25s; }
+  .door:hover { transform:translateY(-4px); border-color:var(--gold-lite);
+    box-shadow:0 26px 46px -30px rgba(27,42,74,.4); }
+  .door-top { display:flex; align-items:center; justify-content:space-between; margin-bottom:30px; }
+  .door-top b { font:600 11px/1 Archivo,sans-serif; letter-spacing:.18em; color:var(--gold); }
+  .door-top span { font:500 10px/1 Archivo,sans-serif; letter-spacing:.18em; text-transform:uppercase; color:var(--muted); }
+  .door h3 { font-family:Spectral,serif; font-weight:400; font-size:30px; line-height:1.12; margin:0 0 14px; }
+  .door p { font:400 15px/1.68 Archivo,sans-serif; color:var(--muted); margin:0; flex:1; text-wrap:pretty; }
+  .door-go { margin-top:28px; display:inline-flex; align-items:center; gap:8px;
+    font:500 13px/1 Archivo,sans-serif; letter-spacing:.06em; color:var(--teal); }
+  .door:hover .door-go { gap:12px; }
+
+  .prin { display:grid; grid-template-columns:.72fr 1.28fr; gap:64px; align-items:start; }
+  .prin-head { position:sticky; top:120px; }
+  .prin-head h2 { margin-bottom:18px; }
+  .prin-head p { font:400 16px/1.72 Archivo,sans-serif; color:var(--muted); margin:0; max-width:34ch; text-wrap:pretty; }
+  .prin-list { border-top:1px solid var(--navy); }
+  .row { display:grid; grid-template-columns:64px 1fr; gap:28px; padding:30px 0;
+    border-bottom:1px solid var(--rule); transition:background .2s; }
+  .row:hover { background:var(--panel); }
+  .row b { font:500 12px/1 Archivo,sans-serif; letter-spacing:.14em; color:var(--gold); padding-top:9px; }
+  .row h3 { font-family:Spectral,serif; font-weight:400; font-size:26px; line-height:1.15; margin:0 0 8px; }
+  .row p { font:400 15.5px/1.68 Archivo,sans-serif; color:var(--muted); margin:0; max-width:52ch; text-wrap:pretty; }
+
+  .status { background:var(--panel); }
+  .status h2 { margin-bottom:44px; }
+  .status-grid { display:grid; grid-template-columns:1fr 1fr 1fr;
+    border:1px solid var(--rule); border-radius:8px; background:var(--cream); overflow:hidden; }
+  .status-grid > div { padding:36px 34px; border-right:1px solid var(--rule); }
+  .status-grid > div:last-child { border-right:0; }
+  .live { display:inline-flex; align-items:center; gap:9px; font:500 10px/1 Archivo,sans-serif;
+    letter-spacing:.2em; text-transform:uppercase; color:var(--teal); margin-bottom:16px; }
+  .live i { width:6px; height:6px; border-radius:50%; background:var(--teal); }
+  .status-grid h3 { font-family:Spectral,serif; font-weight:400; font-size:26px; line-height:1.15; margin:0 0 12px; }
+  .status-grid p { font:400 15px/1.68 Archivo,sans-serif; color:var(--muted); margin:0; text-wrap:pretty; }
+  .lab { font:500 10px/1 Archivo,sans-serif; letter-spacing:.2em; text-transform:uppercase; margin-bottom:20px; }
+  .lab.yes { color:var(--gold); } .lab.no { color:var(--muted); }
+  ul.list { list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:14px; }
+  ul.list li { position:relative; padding-left:26px; font:400 14.5px/1.55 Archivo,sans-serif; color:var(--navy); }
+  ul.list li::before { content:""; position:absolute; left:0; top:.6em; width:16px; height:1px; background:var(--gold); }
+  ul.list.no li { color:var(--muted); }
+  ul.list.no li::before { background:var(--rule); }
+
+  footer { padding:52px 0 60px; }
+  .foot { max-width:var(--max); margin:0 auto; padding:0 var(--pad);
+    display:grid; grid-template-columns:1fr auto; gap:40px; align-items:end; }
+  .foot-brand { display:flex; align-items:center; gap:16px; }
+  .foot-brand strong { display:block; font-family:Spectral,serif; font-weight:500; font-size:18px; margin-bottom:5px; }
+  .foot-brand span { font:400 13px/1.5 Archivo,sans-serif; color:var(--muted); }
+  .foot-right { text-align:right; }
+  .foot-right nav { display:flex; gap:20px; justify-content:flex-end; margin-bottom:10px; }
+  .foot-right nav a { font:500 13px/1 Archivo,sans-serif; color:var(--teal); }
+  .foot-right nav a:hover { text-decoration:underline; text-underline-offset:3px; }
+  .foot-legal { font:400 11px/1.55 Archivo,sans-serif; color:var(--muted); }
+
+  @media (max-width:1024px) {
+    :root { --pad:36px; }
+    .hero-grid { grid-template-columns:1fr; gap:48px; min-height:0; padding-top:56px; padding-bottom:72px; }
+    /* Stack: principle · monogram · principle  -  labels were display:none (Dad mobile report 2026-07-31) */
+    .hero-art {
+      order:-1;
+      justify-content:center;
+      align-items:center;
+      flex-direction:column;
+      gap:16px;
+      min-height:0;
+      text-align:center;
+      width:100%;
+    }
+    .hero-art::before {
+      width:280px; height:280px; max-width:100%;
+      left:50%; top:50%; transform:translate(-50%,-50%);
+    }
+    .flabel {
+      display:block; position:static; white-space:normal;
+      font-size:11px; letter-spacing:.16em; line-height:1.35;
+      max-width:32ch; text-align:center; margin:0 auto;
+      transform:none; left:auto; right:auto; top:auto; bottom:auto;
+    }
+    .flabel.a { order:1; color:var(--muted); }
+    .mono-spin-wrap { order:2; width:200px; height:200px; margin:0 auto; }
+    .flabel.b { order:3; color:var(--teal); }
+    .mono-lg span { font-size:52px; }
+    .mono-lg i.t { top:9px; right:9px; width:14px; height:14px; }
+    .work-head { grid-template-columns:1fr; gap:24px; align-items:start; }
+    .doors { grid-template-columns:1fr; }
+    .door { min-height:0; }
+    .prin { grid-template-columns:1fr; gap:36px; }
+    .prin-head { position:static; }
+    .status-grid { grid-template-columns:1fr; }
+    .status-grid > div { border-right:0; border-bottom:1px solid var(--rule); }
+    .status-grid > div:last-child { border-bottom:0; }
+    .foot { grid-template-columns:1fr; align-items:start; }
+    .foot-right { text-align:left; }
+    .foot-right nav { justify-content:flex-start; }
+    .book-grid { grid-template-columns:1fr; gap:36px; }
+  }
+  @media (max-width:640px) {
+    :root {
+      --pad: max(24px, env(safe-area-inset-left, 0px) + 20px);
+    }
+    /* Same horizontal inset on every content shell (work / principles / status / hero / nav / foot) */
+    .wrap,
+    .nav-inner,
+    .hero-grid,
+    .foot {
+      padding-left: var(--pad) !important;
+      padding-right: var(--pad) !important;
+    }
+    .nav-inner { padding-top: 14px; padding-bottom: 14px; }
+    .hero-grid { padding-top: 48px; padding-bottom: 64px; }
+    .pad { padding-top: 56px; padding-bottom: 56px; }
+    .door { padding: 28px 22px 26px; }
+    .status-grid > div { padding: 28px 22px; }
+    .row { grid-template-columns: 38px 1fr; gap: 14px; }
+    .row h3 { font-size: 21px; }
+    .brand-sub { display: none; }
+    .nav-links { gap: 18px; }
+    /* Keep Book + Contact on small screens; hide long nav */
+    .nav-links a:not(.nav-cta):not(.nav-book) { display: none; }
+    .ctas { flex-direction: column; align-items: stretch; }
+    .btn { justify-content: center; min-height: 50px; }
+    .band { padding: 22px 0; }
+    .band-set { padding-left: var(--pad); }
+  }
+  @media (prefers-reduced-motion:reduce) {
+    /* Calm everything except the hero monogram spin (Dad lock). */
+    .band-track,.dot,.rise { animation:none !important; }
+    .rise { opacity:1; transform:none; }
+    html { scroll-behavior:auto; }
+    /* Keep mark + ring turning  -  still clearly visible with system Reduce Motion on */
+    .mono-spin { animation: mono-spin 10s linear infinite !important; }
+    .mono-spin-wrap::before { animation: mono-orbit 10s linear infinite reverse !important; }
+  }
+</style>
+<link rel="stylesheet" href="spin-fix.css">
 </head>
-<body>
-  <p style="padding:48px;opacity:.7">Loading LZRC...</p>
+<body id="top">
+
+<header class="nav" id="nav">
+  <div class="nav-inner">
+    <a class="brand" href="#top" aria-label="LZRC home">
+            <svg class="nav-plate" viewBox="0 0 40 40" aria-hidden="true" focusable="false">
+        <!-- border -->
+        <rect class="np-border" x="1.2" y="1.2" width="37.6" height="37.6" rx="2.5"/>
+        <!-- cross -->
+        <line class="np-cross" x1="20" y1="4.5" x2="20" y2="35.5"/>
+        <line class="np-cross" x1="4.5" y1="20" x2="35.5" y2="20"/>
+        <!-- gold tick top-right (beside Z) -->
+        <path class="np-tick" d="M28.5 1.2 H38.8 V11.5"/>
+        <!-- letters L Z / R C -->
+        <text class="np-ltr l" x="10.5" y="15.2" text-anchor="middle">L</text>
+        <text class="np-ltr z" x="29.5" y="15.2" text-anchor="middle">Z</text>
+        <text class="np-ltr r" x="10.5" y="31.5" text-anchor="middle">R</text>
+        <text class="np-ltr c" x="29.5" y="31.5" text-anchor="middle">C</text>
+      </svg>
+      <div>
+        <div class="brand-name">LZRC</div>
+        <div class="brand-sub">Luu Zaibatsu Research Collaborative</div>
+      </div>
+    </a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="#work">Work</a>
+      <a href="#principles">Principles</a>
+      <a href="#status">Status</a>
+      <a href="atelier/">Atelier</a>
+      <a class="nav-book" href="#book">Book</a>
+      <a class="nav-cta" href="https://www.linkedin.com/in/kienchil/" target="_blank" rel="noopener">Contact <span aria-hidden="true">↗</span></a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero" aria-label="Introduction">
+    <div class="hero-grid">
+      <div>
+        <div class="eyebrow rise">
+          <span class="dot" aria-hidden="true"></span>
+          <span>Adelaide · Research atelier</span>
+        </div>
+        <h1 class="rise d1">AI that stays<br><em>honest</em> under load.</h1>
+        <hr class="hero-rule rise d2">
+        <p class="hero-lead rise d3">Luu Zaibatsu Research Collaborative</p>
+        <p class="hero-body rise d4">AI for business is usually expensive, and it often brings data and privacy risk with it. We build the other path: continuity and source-bound memory that stay yours, human-gated agency, and systems that hold under real operational load without locking the institutional record inside a vendor chat log.</p>
+        <div class="ctas rise d5">
+          <a class="btn btn-primary" href="#work">Enter the work <span aria-hidden="true">→</span></a>
+          <a class="btn btn-ghost" href="#book">Book discovery</a>
+          <a class="btn btn-ghost" href="atelier/">KeyGraph atelier</a>
+          <a class="btn btn-ghost" href="https://kienluu78.github.io/keygraph/" target="_blank" rel="noopener">Proof site</a>
+        </div>
+      </div>
+                  <div class="hero-art" aria-hidden="true">
+        <span class="flabel a">Memory stays yours</span>
+        <span class="flabel b">Verify · don&rsquo;t infer</span>
+        <div class="mono-spin-wrap">
+          <div class="mono mono-lg mono-spin" title="LZRC monogram">
+            <span>L</span><span class="z">Z</span><span>R</span><span>C</span>
+            <i class="v"></i><i class="h"></i><i class="t"></i>
+          </div>
+        </div>
+      </div>
+</div>
+  </section>
+
+  <div class="band" aria-hidden="true">
+    <div class="band-track">
+      <div class="band-set">
+        <span>Source-bound memory</span><i></i><span>Human at the door</span><i></i>
+        <span class="gold">Models interchangeable</span><i></i><span>Teaching without hype</span><i></i>
+        <span>Agent desk rescue</span><i></i><span>Adelaide</span><i></i>
+      </div>
+      <div class="band-set">
+        <span>Source-bound memory</span><i></i><span>Human at the door</span><i></i>
+        <span class="gold">Models interchangeable</span><i></i><span>Teaching without hype</span><i></i>
+        <span>Agent desk rescue</span><i></i><span>Adelaide</span><i></i>
+      </div>
+    </div>
+  </div>
+
+  <section id="work">
+    <div class="wrap pad">
+      <div class="kicker"><b>01</b> The work</div>
+      <hr class="section-rule" aria-hidden="true">
+      <div class="work-head">
+        <h2>Four doors. One house.</h2>
+        <p>Not a product catalogue. A research collaborative with live proofs. Pick the door that matches the conversation you are already in.</p>
+      </div>
+      <div class="doors">
+        <a class="door" href="https://kienluu78.github.io/keygraph/" target="_blank" rel="noopener">
+          <div class="door-top"><b>01</b><span>Product proof</span></div>
+          <h3>KeyGraph</h3>
+          <p>An always-on memory agent. Source-bound continuity that holds under real operational load: nothing asserted without a record behind it.</p>
+          <div class="door-go">Open <span aria-hidden="true">→</span></div>
+        </a>
+        <a class="door" href="atelier/">
+          <div class="door-top"><b>02</b><span>Live slice</span></div>
+          <h3>KeyGraph atelier</h3>
+          <p>Text atelier for committee and beta eyes: source chips on every answer, refuse ungrounded claims. Auth later; honesty now.</p>
+          <div class="door-go">Enter <span aria-hidden="true">→</span></div>
+        </a>
+        <a class="door" href="https://www.linkedin.com/in/kienchil/" target="_blank" rel="noopener">
+          <div class="door-top"><b>03</b><span>Teaching</span></div>
+          <h3>GenAI workshops</h3>
+          <p>Shared vocabulary before enablement: where GenAI fits, how the machine actually learns, and what it cannot be trusted to do. No demo theatre.</p>
+          <div class="door-go">Open <span aria-hidden="true">→</span></div>
+        </a>
+        <a class="door" href="https://www.linkedin.com/in/kienchil/" target="_blank" rel="noopener">
+          <div class="door-top"><b>04</b><span>Desk</span></div>
+          <h3>Agent Desk Rescue</h3>
+          <p>Coding-agent skills, safety rails and operational recovery for teams who already bought the tools and need them to hold under pressure.</p>
+          <div class="door-go">Open <span aria-hidden="true">→</span></div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section id="principles">
+    <div class="wrap pad prin">
+      <div class="prin-head">
+        <div class="kicker"><b>02</b> Principles</div>
+        <hr class="section-rule" aria-hidden="true">
+        <h2>Expensive<br>restraint.</h2>
+        <p>The same four rules on every surface: public page, private pilot, teaching room.</p>
+      </div>
+      <div class="prin-list">
+        <div class="row"><b>01</b><div><h3>Verify, don't infer</h3><p>No source in the graph, no claim in the answer. Fluency is free; being right is the product.</p></div></div>
+        <div class="row"><b>02</b><div><h3>A human at the door</h3><p>High-severity actions wait for a logged approval. Write access stays narrower than conversation.</p></div></div>
+        <div class="row"><b>03</b><div><h3>Memory stays yours</h3><p>Weights get replaced. The institutional record stays in your hands, not locked inside a vendor chat log.</p></div></div>
+        <div class="row"><b>04</b><div><h3>Models interchangeable</h3><p>Architecture outlasts any single model. Continuity is the moat, not a brand of weights.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="status" class="status">
+    <div class="wrap pad">
+      <div class="kicker"><b>03</b> Status</div>
+      <hr class="section-rule" aria-hidden="true">
+      <h2>What this is, and is not.</h2>
+      <div class="status-grid">
+        <div>
+          <div class="live"><i></i>Active</div>
+          <h3>Private research,<br>Adelaide</h3>
+          <p>LZRC is Luu Zaibatsu Research Collaborative Pty Ltd, a private Adelaide research company. Pilots are packaged carefully and named plainly. We do not ship theatre.</p>
+        </div>
+        <div>
+          <div class="lab yes">Yes · running now</div>
+          <ul class="list">
+            <li>Live KeyGraph product proof</li>
+            <li>KeyGraph atelier (invite UI)</li>
+            <li>Teaching modules in circulation</li>
+            <li>Agent desk enablement</li>
+          </ul>
+        </div>
+        <div>
+          <div class="lab no">No · not this</div>
+          <ul class="list no">
+            <li>A public multi-tenant SaaS</li>
+            <li>Regulated clinical decision support</li>
+            <li>Invented LOIs or client logos</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="book" aria-label="Book a discovery call">
+    <div class="wrap pad">
+      <div class="kicker"><b>04</b> Book</div>
+      <hr class="section-rule" aria-hidden="true">
+      <div class="book-grid">
+        <div>
+          <h2>One human<br>at the door.</h2>
+          <p class="hero-body" style="margin-top:18px;margin-bottom:0">Thirty minutes. Adelaide time. A real conversation about whether KeyGraph, Agent Desk, or a teaching slice is the right next step. Not demo theatre.</p>
+        </div>
+        <div class="book-card">
+          <h3>Discovery call</h3>
+          <p>Bring one sentence on the operational pain if you have it. Data residency and vendor lock-in are fair game.</p>
+          <ul class="book-meta">
+            <li>30 minutes</li>
+            <li>Adelaide timezone</li>
+            <li>Calendar when live; LinkedIn interim until then</li>
+          </ul>
+          <div class="ctas">
+            <a class="btn btn-primary" id="lzrc-book-cta" href="https://www.linkedin.com/in/kienchil/" target="_blank" rel="noopener">Book discovery <span aria-hidden="true">→</span></a>
+            <a class="btn btn-ghost" href="https://www.linkedin.com/in/kienchil/" target="_blank" rel="noopener">Message on LinkedIn</a>
+          </div>
+          <p class="book-note" id="lzrc-book-interim-note">Calendar booking is not linked yet. This button opens LinkedIn so the door stays open.</p>
+          <p class="book-note" id="lzrc-book-live-note" hidden>Opens the LZRC discovery appointment schedule.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="foot">
+    <div class="foot-brand">
+      <div class="mono" aria-hidden="true">
+        <span>L</span><span class="z">Z</span><span>R</span><span>C</span>
+        <i class="v"></i><i class="h"></i><i class="t"></i>
+      </div>
+      <div>
+        <strong>Luu Zaibatsu Research Collaborative</strong>
+        <span>Adelaide · South Australia</span>
+      </div>
+    </div>
+    <div class="foot-right">
+      <nav aria-label="Elsewhere">
+        <a href="#book">Book</a>
+        <a href="https://www.linkedin.com/in/kienchil/" target="_blank" rel="noopener">linkedin.com/in/kienchil</a>
+        <a href="https://kienluu78.github.io/keygraph/" target="_blank" rel="noopener">KeyGraph</a>
+      </nav>
+      <div class="foot-legal">Luu Zaibatsu Research Collaborative Pty Ltd · ACN 702 511 037 · ABN 78 702 511 037</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    var nav = document.getElementById("nav");
+    var onScroll = function () { nav.classList.toggle("is-scrolled", window.scrollY > 8); };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+
+    /* CONFIG: paste Google Calendar Appointment schedule (or Calendly) URL when live.
+       Checklist: shared/artifacts/lzrc-bookings-20260804/LZRC_BOOKING_CALENDAR_CHECKLIST_20260804.md
+       Dad grab: Shared Artifacts / linkedin / 20260804-LZRC-BOOKING-CALENDAR-CHECKLIST.md */
+    var LZRC_BOOKING_URL = "";
+    var LZRC_BOOKING_INTERIM = "https://www.linkedin.com/in/kienchil/";
+
+    var cta = document.getElementById("lzrc-book-cta");
+    var interimNote = document.getElementById("lzrc-book-interim-note");
+    var liveNote = document.getElementById("lzrc-book-live-note");
+    if (cta) {
+      var live = typeof LZRC_BOOKING_URL === "string" && LZRC_BOOKING_URL.trim().length > 8;
+      if (live) {
+        cta.href = LZRC_BOOKING_URL.trim();
+        cta.target = "_blank";
+        cta.rel = "noopener";
+        if (interimNote) interimNote.hidden = true;
+        if (liveNote) liveNote.hidden = false;
+      } else {
+        cta.href = LZRC_BOOKING_INTERIM;
+        cta.target = "_blank";
+        cta.rel = "noopener";
+        if (interimNote) interimNote.hidden = false;
+        if (liveNote) liveNote.hidden = true;
+      }
+    }
+  })();
+</script>
+
 </body>
 </html>
