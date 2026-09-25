@@ -14,7 +14,6 @@ Public splash / hub for Luu Zaibatsu Research Collaborative (Adelaide). Static H
 - Not a private family site
 - Not multi-tenant SaaS
 - Not regulated clinical decision support
-- Not invented LOIs or client logos
 
 ## Copy rule (Eric 2026-08-01)
 No em dashes (Unicode U+2014) or en dashes (U+2013) in client-facing copy.
